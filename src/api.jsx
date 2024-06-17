@@ -7,15 +7,17 @@ const getArticles = () => {
     return res.data;
   });
 };
-// export const getUsers = () => {
-//   return gamersApi.get('/users').then((res) => {
-//     return res.data;
-//   });
-// };
-// export const getGenres = () => {
-//   return gamersApi.get('/genres').then((res) => {
-//     return res.data;
-//   });
-// };
 
-export { getArticles };
+const getArticleByID = (article_id) => {
+  return ncNewsApi.get(`/articles/${article_id}`).then((res) => {
+    return res.data;
+  });
+};
+
+const getCommentsByArticle = (article_id) => {
+  return ncNewsApi.get(`/articles/${article_id}/comments`).then((res) => {
+    return res.data;
+  });
+};
+
+export { getArticles, getArticleByID, getCommentsByArticle };
