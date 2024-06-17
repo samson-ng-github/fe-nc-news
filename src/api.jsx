@@ -7,6 +7,12 @@ const getArticles = () => {
     return res.data;
   });
 };
+
+const getArticleByID = (article_id) => {
+  return ncNewsApi.get(`/articles/${article_id}`).then((res) => {
+    return res.data;
+  });
+};
 // export const getUsers = () => {
 //   return gamersApi.get('/users').then((res) => {
 //     return res.data;
@@ -18,4 +24,4 @@ const getArticles = () => {
 //   });
 // };
 
-export { getArticles };
+export { getArticles, getArticleByID };
