@@ -20,4 +20,12 @@ const getCommentsByArticle = (article_id) => {
   });
 };
 
-export { getArticles, getArticleByID, getCommentsByArticle };
+const patchVotes = (article_id, amount) => {
+  return ncNewsApi
+    .patch(`/articles/${article_id}`, { inc_votes: amount })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export { getArticles, getArticleByID, getCommentsByArticle, patchVotes };

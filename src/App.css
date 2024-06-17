@@ -89,6 +89,11 @@ nav {
   font-weight: bold;
 }
 
+.kudos {
+  border: 0;
+  background-color: white;
+}
+
 @media only screen and (max-width: 964px) {
   body {
     max-width: 648px;
