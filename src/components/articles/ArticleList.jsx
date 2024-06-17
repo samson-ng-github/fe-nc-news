@@ -4,21 +4,22 @@ import { ArticleCard } from './ArticleCard';
 
 export const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
+  const [isArticleListLoading, setIsArticleListLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then((data) => {
-      console.log(data.articles);
       setArticleList(data.articles);
+      setIsArticleListLoading(false);
     });
   }, []);
 
   return (
     <ul id="article-list">
-      {articleList.length
-        ? articleList.map((article) => {
+      {isArticleListLoading
+        ? 'Loading articles...'
+        : articleList.map((article) => {
             return <ArticleCard key={article.article_id} {...article} />;
-          })
-        : 'Loading...'}
+          })}
     </ul>
   );
 };

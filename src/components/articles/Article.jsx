@@ -7,6 +7,8 @@ export const Article = () => {
   const [article, setArticle] = useState({});
   const [commentList, setCommentList] = useState([]);
   const [fakeKudos, setFakeKudos] = useState(0);
+  const [isArticleLoading, setIsArticleLoading] = useState(true);
+  const [isCommentsLoading, setIsCommentsLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -17,10 +19,12 @@ export const Article = () => {
 
     Promise.all(promiseArr).then((data) => {
       setArticle(data[0].article);
-      setFakeKudos(data[0].article.votes);
       setCommentList(data[1].comments);
+      setFakeKudos(data[0].article.votes);
+      setIsArticleLoading(false);
+      setIsCommentsLoading(false);
     });
-  }, []);
+  }, [article_id]);
 
   const handelThumbUp = () => {
     setFakeKudos(fakeKudos + 1);
@@ -30,7 +34,7 @@ export const Article = () => {
         setFakeKudos(fakeKudos - 1);
       });
   };
-  
+
   const handelThumbDown = () => {
     setFakeKudos(fakeKudos - 1);
     patchVotes(article_id, -1)
@@ -43,7 +47,9 @@ export const Article = () => {
   return (
     <main>
       <article id="article">
-        {Object.keys(article).length ? (
+        {isArticleLoading ? (
+          'Loading article...'
+        ) : (
           <div>
             <img id="article-img" src={article.article_img_url} />
             <h2>{article.title}</h2>
@@ -60,15 +66,13 @@ export const Article = () => {
             </p>
             <p>{article.body}</p>
           </div>
-        ) : (
-          'Loading article...'
         )}
       </article>
-      {commentList.length
-        ? commentList.map((comment) => {
+      {isCommentsLoading
+        ? 'Loading comments...'
+        : commentList.map((comment) => {
             return <CommentCard key={comment.comment_id} {...comment} />;
-          })
-        : 'Loading comments...'}
+          })}
     </main>
   );
 };

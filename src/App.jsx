@@ -14,9 +14,8 @@ function App() {
       <nav>Nav</nav>
       <Routes>
         <Route path="/" element={<ArticleList />} />
-      </Routes>
-      <Routes>
         <Route path="/articles/:article_id" element={<Article />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </main>
   );
