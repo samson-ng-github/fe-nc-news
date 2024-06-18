@@ -74,6 +74,13 @@ nav {
   padding: 0 0.5rem 0 0.5rem;
 }
 
+.pagination-button-disabled {
+  margin: 0 1rem 0 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+  color: rgb(193, 193, 193);
+  pointer-events: none;
+}
+
 #article-list {
   display: flex;
   flex-wrap: wrap;

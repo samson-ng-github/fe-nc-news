@@ -12,6 +12,7 @@ export const ArticleList = ({ sortBy, order }) => {
   const { topic } = useParams();
 
   useEffect(() => {
+    setCurrentPage(1);
     getArticles({ topic, sortBy, order }).then((data) => {
       setArticleList(data.articles);
       console.log(data.articles.length);
@@ -78,17 +79,25 @@ const Pagination = (props) => {
   } = props;
   return (
     <section id="pagination">
-      {currentPage === 1 ? null : (
-        <button onClick={handlePrevious} className="pagination-button">
-          Previous
-        </button>
-      )}
+      <button
+        onClick={handlePrevious}
+        className={
+          currentPage === 1 ? 'pagination-button-disabled' : 'pagination-button'
+        }
+      >
+        Previous
+      </button>
       Page {currentPage} of {Math.ceil(articleList.length / articlePerPage)}
-      {currentPage === Math.ceil(articleList.length / articlePerPage) ? null : (
-        <button onClick={handleNext} className="pagination-button">
-          Next
-        </button>
-      )}
+      <button
+        onClick={handleNext}
+        className={
+          currentPage === Math.ceil(articleList.length / articlePerPage)
+            ? 'pagination-button-disabled'
+            : 'pagination-button'
+        }
+      >
+        Next
+      </button>
     </section>
   );
 };
