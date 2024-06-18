@@ -1,39 +1,44 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Message } from '../message/Message';
+import { CommentCard } from './CommentCard';
 import {
   getArticleByID,
   getCommentsByArticle,
   patchVotes,
   postComment,
 } from '../../api';
-import { CommentCard } from './CommentCard';
 
 export const Article = () => {
   const [article, setArticle] = useState({});
   const [commentList, setCommentList] = useState([]);
   const [fakeKudos, setFakeKudos] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingFailed, setIsLoadingFailed] = useState(false);
   const [isPostingComment, setIsPostingComment] = useState(false);
+  const [isNewCommentEmpty, setIsNewCommentEmpty] = useState(false);
   const [newComment, setNewComment] = useState('');
   const { article_id } = useParams();
 
   useEffect(() => {
-    resetCommentList();
-  }, [article_id]);
-
-  const resetCommentList = () => {
     const promiseArr = [
       getArticleByID(article_id),
       getCommentsByArticle(article_id),
     ];
 
-    Promise.all(promiseArr).then((data) => {
-      setArticle(data[0].article);
-      setCommentList(data[1].comments);
-      setFakeKudos(data[0].article.votes);
-      setIsLoading(false);
-    });
-  };
+    Promise.all(promiseArr)
+      .then((data) => {
+        setArticle(data[0].article);
+        setCommentList(data[1].comments);
+        setFakeKudos(data[0].article.votes);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+        setIsLoadingFailed(true);
+      });
+  }, [article_id]);
 
   const handleThumbUp = () => {
     setFakeKudos(fakeKudos + 1);
@@ -55,12 +60,20 @@ export const Article = () => {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
+    if (!newComment) {
+      setIsNewCommentEmpty(true);
+      setTimeout(() => {
+        setIsNewCommentEmpty(false);
+      }, 1000);
+      return null;
+    }
     setIsPostingComment(true);
     postComment(article_id, newComment, 'tickle122')
       .then((data) => {
-        return resetCommentList();
+        return getCommentsByArticle(article_id);
       })
-      .then(() => {
+      .then((data) => {
+        setCommentList(data.comments);
         setIsPostingComment(false);
         setNewComment('');
       });
@@ -76,9 +89,9 @@ export const Article = () => {
 
   return (
     <main>
-      {isLoading ? (
-        <h2 className="loading-message">Loading...</h2>
-      ) : (
+      {isLoading ? <Message message="Loading..." /> : null}
+      {isLoadingFailed ? <Message message="Article does not exist" /> : null}
+      {!isLoading && !isLoadingFailed ? (
         <>
           <article id="article">
             <img id="article-img" src={article.article_img_url} />
@@ -98,7 +111,7 @@ export const Article = () => {
           </article>
 
           {isPostingComment ? (
-            <h2 className="loading-message">Posting comments...</h2>
+            <Message message="Posting comment..." />
           ) : (
             <form className="comment-form" onSubmit={handleCommentSubmit}>
               <label>
@@ -113,13 +126,15 @@ export const Article = () => {
                 placeholder="Post a comment"
                 onChange={handleCommentChange}
                 value={newComment}
-                required
               ></input>
               <button id="comment-submit" type="submit">
                 Send
               </button>
             </form>
           )}
+          {isNewCommentEmpty ? (
+            <Message message="Please enter a comment." />
+          ) : null}
 
           {commentList.map((comment) => {
             return (
@@ -131,7 +146,7 @@ export const Article = () => {
             );
           })}
         </>
-      )}
+      ) : null}
     </main>
   );
 };

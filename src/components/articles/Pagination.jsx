@@ -2,7 +2,7 @@ export const Pagination = (props) => {
   const {
     currentPage,
     articlePerPage,
-    articleList,
+    articleListLength,
     handleNext,
     handlePrevious,
   } = props;
@@ -16,11 +16,11 @@ export const Pagination = (props) => {
       >
         Previous
       </button>
-      Page {currentPage} of {Math.ceil(articleList.length / articlePerPage)}
+      Page {currentPage} of {Math.ceil(articleListLength / articlePerPage)}
       <button
         onClick={handleNext}
         className={
-          currentPage === Math.ceil(articleList.length / articlePerPage)
+          currentPage === Math.ceil(articleListLength / articlePerPage)
             ? 'pagination-button-disabled'
             : 'pagination-button'
         }

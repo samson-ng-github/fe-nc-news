@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import { getTopics } from '../../api';
 import { Link } from 'react-router-dom';
 
 export const Nav = ({ topicList, handleSortByChange, handleOrderChange }) => {
@@ -31,7 +29,7 @@ export const Nav = ({ topicList, handleSortByChange, handleOrderChange }) => {
         <li>
           <form>
             <label>
-              Order by:{' '}
+              Order:{' '}
               <select onChange={handleOrderChange}>
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>

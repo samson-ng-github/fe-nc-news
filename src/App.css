@@ -39,6 +39,14 @@ nav {
   padding: 1rem;
 }
 
+.message {
+  width: auto;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
 #topic-list {
   display: flex;
   gap: 1rem;
@@ -172,12 +180,6 @@ select {
 
 .hidden {
   display: none;
-}
-
-.loading-message {
-  border: 1px solid black;
-  padding: 1rem;
-  margin: 1rem;
 }
 
 @media only screen and (max-width: 964px) {
