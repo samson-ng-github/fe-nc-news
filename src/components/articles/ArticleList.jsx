@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
+import { useParams } from 'react-router-dom';
 
-export const ArticleList = ({ topic }) => {
+export const ArticleList = ({ sortBy, order }) => {
   const [articleList, setArticleList] = useState([]);
   const [isArticleListLoading, setIsArticleListLoading] = useState(true);
+  const { topic } = useParams();
 
   useEffect(() => {
-    getArticles(topic).then((data) => {
+    getArticles({ topic, sortBy, order }).then((data) => {
       setArticleList(data.articles);
       setIsArticleListLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortBy, order]);
 
   return (
     <div>
