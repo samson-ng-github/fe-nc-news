@@ -34,7 +34,8 @@ export const Pagination = (props) => {
       >
         Previous
       </button>
-      Page {currentPage} of {Math.ceil(articleList.length / articlePerPage)}
+      Page {currentPage} of{' '}
+      {Math.ceil(articleList.length / articlePerPage) || 1}
       <button
         onClick={handleNext}
         className={

@@ -26,7 +26,7 @@ export const ArticleList = () => {
         setIsLoading(false);
         setTopicList(data[0].topics);
         setArticleList(data[1].articles);
-        setArticlesOnThisPage(data[1].articles.slice(0, 9));
+        setArticlesOnThisPage(data[1].articles.slice(0, 10));
       })
       .catch((err) => {
         console.log(err);
