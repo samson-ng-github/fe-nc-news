@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { useParams } from 'react-router-dom';
+import { Pagination } from './Pagination';
 
 export const ArticleList = ({ sortBy, order }) => {
   const [articleList, setArticleList] = useState([]);
@@ -66,38 +67,5 @@ export const ArticleList = ({ sortBy, order }) => {
         </ul>
       )}
     </div>
-  );
-};
-
-const Pagination = (props) => {
-  const {
-    currentPage,
-    articlePerPage,
-    articleList,
-    handleNext,
-    handlePrevious,
-  } = props;
-  return (
-    <section id="pagination">
-      <button
-        onClick={handlePrevious}
-        className={
-          currentPage === 1 ? 'pagination-button-disabled' : 'pagination-button'
-        }
-      >
-        Previous
-      </button>
-      Page {currentPage} of {Math.ceil(articleList.length / articlePerPage)}
-      <button
-        onClick={handleNext}
-        className={
-          currentPage === Math.ceil(articleList.length / articlePerPage)
-            ? 'pagination-button-disabled'
-            : 'pagination-button'
-        }
-      >
-        Next
-      </button>
-    </section>
   );
 };

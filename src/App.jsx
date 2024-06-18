@@ -53,10 +53,14 @@ function App() {
           element={<ArticleList sortBy={sortBy} order={order} />}
         />
         <Route path="/articles/:article_id" element={<Article />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>
   );
 }
+
+const ErrorPage = () => {
+  return <h2 className="error-page">Page does not exist</h2>;
+};
 
 export default App;
