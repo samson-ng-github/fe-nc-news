@@ -2,10 +2,12 @@ import axios from 'axios';
 const ncNewsApi = axios.create({
   baseURL: 'https://be-nc-news-v1e2.onrender.com/api',
 });
-const getArticles = (topic) => {
-  return ncNewsApi.get('/articles', { params: { topic } }).then((res) => {
-    return res.data;
-  });
+const getArticles = ({ topic, sortBy, order }) => {
+  return ncNewsApi
+    .get('/articles', { params: { topic, sort_by: sortBy, order } })
+    .then((res) => {
+      return res.data;
+    });
 };
 
 const getArticleByID = (article_id) => {

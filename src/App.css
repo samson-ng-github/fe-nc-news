@@ -35,11 +35,15 @@ h3 {
 nav {
   width: auto;
   border: 1px solid black;
-  display: flex;
-  gap: 1rem;
   margin: 1rem;
   padding: 1rem;
+}
+
+#topic-list {
+  display: flex;
+  gap: 1rem;
   justify-content: center;
+  list-style-type: none;
 }
 
 .topic {
