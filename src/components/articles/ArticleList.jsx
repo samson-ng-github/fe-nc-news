@@ -15,7 +15,9 @@ export const ArticleList = () => {
 
   return (
     <div>
-      {isArticleListLoading ? <h2>Loading articles...</h2> : null}
+      {isArticleListLoading ? (
+        <h2 className="loading-message">Loading articles...</h2>
+      ) : null}
       {isArticleListLoading ? null : (
         <ul id="article-list">
           {articleList.map((article) => {
