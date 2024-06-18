@@ -119,9 +119,20 @@ nav {
   font-weight: bold;
 }
 
-.kudos {
+.kudos,
+.bin-comment {
   border: 0;
   background-color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.loading-message {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 @media only screen and (max-width: 964px) {

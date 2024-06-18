@@ -36,10 +36,17 @@ const postComment = (article_id, body, author) => {
     });
 };
 
+const deleteComment = (comment_id) => {
+  return ncNewsApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
+  });
+};
+
 export {
   getArticles,
   getArticleByID,
   getCommentsByArticle,
   patchVotes,
   postComment,
+  deleteComment,
 };
