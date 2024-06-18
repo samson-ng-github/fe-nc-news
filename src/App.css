@@ -79,6 +79,22 @@ nav {
   width: 100%;
 }
 
+.comment-form {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+}
+
+#comment-input {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: rgb(236, 236, 236);
+  margin-left: 1rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  flex: 1;
+}
+
 .comment-card {
   border: 1px solid black;
   padding: 1rem;
@@ -86,6 +102,20 @@ nav {
 }
 
 .comment-author {
+  font-weight: bold;
+}
+
+#new-comment-author {
+  font-weight: bold;
+  line-height: 36px;
+}
+
+#comment-submit {
+  margin-left: 1rem;
+  width: 70px;
+}
+
+#comment-author {
   font-weight: bold;
 }
 
@@ -102,6 +132,9 @@ nav {
 
 @media only screen and (max-width: 648px) {
   body {
-    max-width: 332px;
+    width: 332px;
+  }
+  #comment-submit {
+    display: none;
   }
 }

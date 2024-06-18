@@ -14,12 +14,15 @@ export const ArticleList = () => {
   }, []);
 
   return (
-    <ul id="article-list">
-      {isArticleListLoading
-        ? 'Loading articles...'
-        : articleList.map((article) => {
+    <div>
+      {isArticleListLoading ? <h2>Loading articles...</h2> : null}
+      {isArticleListLoading ? null : (
+        <ul id="article-list">
+          {articleList.map((article) => {
             return <ArticleCard key={article.article_id} {...article} />;
           })}
-    </ul>
+        </ul>
+      )}
+    </div>
   );
 };
