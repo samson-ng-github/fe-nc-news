@@ -11,9 +11,7 @@ import { CommentCard } from './CommentCard';
 export const Article = () => {
   const [article, setArticle] = useState({});
   const [commentList, setCommentList] = useState([]);
-  const [fakeemoji, setFakeemoji] = useState(0);
-  // const [isArticleLoading, setIsArticleLoading] = useState(true);
-  // const [isCommentsLoading, setIsCommentsLoading] = useState(true);
+  const [fakeKudos, setFakeKudos] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isPostingComment, setIsPostingComment] = useState(false);
   const [newComment, setNewComment] = useState('');
@@ -32,22 +30,22 @@ export const Article = () => {
     Promise.all(promiseArr).then((data) => {
       setArticle(data[0].article);
       setCommentList(data[1].comments);
-      setFakeemoji(data[0].article.votes);
+      setFakeKudos(data[0].article.votes);
       setIsLoading(false);
     });
   };
 
   const handleThumbUp = () => {
-    setFakeemoji(fakeemoji + 1);
+    setFakeKudos(fakeKudos + 1);
     patchVotes(article_id, 1).catch((err) => {
-      setFakeemoji(fakeemoji - 1);
+      setFakeKudos(fakeKudos - 1);
     });
   };
 
   const handleThumbDown = () => {
-    setFakeemoji(fakeemoji - 1);
+    setFakeKudos(fakeKudos - 1);
     patchVotes(article_id, -1).catch((err) => {
-      setFakeemoji(fakeemoji + 1);
+      setFakeKudos(fakeKudos + 1);
     });
   };
 
@@ -81,7 +79,7 @@ export const Article = () => {
       {isLoading ? (
         <h2 className="loading-message">Loading...</h2>
       ) : (
-        <div>
+        <>
           <article id="article">
             <img id="article-img" src={article.article_img_url} />
             <h2>{article.title}</h2>
@@ -94,7 +92,7 @@ export const Article = () => {
               <button className="emoji" onClick={handleThumbDown}>
                 👎
               </button>{' '}
-              {`${fakeemoji}`}
+              {`${fakeKudos}`}
             </p>
             <p>{article.body}</p>
           </article>
@@ -132,7 +130,7 @@ export const Article = () => {
               />
             );
           })}
-        </div>
+        </>
       )}
     </main>
   );

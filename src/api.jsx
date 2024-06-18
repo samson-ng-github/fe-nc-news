@@ -2,8 +2,8 @@ import axios from 'axios';
 const ncNewsApi = axios.create({
   baseURL: 'https://be-nc-news-v1e2.onrender.com/api',
 });
-const getArticles = () => {
-  return ncNewsApi.get('/articles').then((res) => {
+const getArticles = (topic) => {
+  return ncNewsApi.get('/articles', { params: { topic } }).then((res) => {
     return res.data;
   });
 };
@@ -42,6 +42,12 @@ const deleteComment = (comment_id) => {
   });
 };
 
+const getTopics = () => {
+  return ncNewsApi.get(`/topics`).then((res) => {
+    return res.data;
+  });
+};
+
 export {
   getArticles,
   getArticleByID,
@@ -49,4 +55,5 @@ export {
   patchVotes,
   postComment,
   deleteComment,
+  getTopics,
 };
