@@ -24,15 +24,11 @@ export const ArticleList = () => {
     const promiseArr = [getTopics(), getArticles({ topic, sortBy, order })];
     Promise.all(promiseArr)
       .then((data) => {
+        console.log(currentPage);
         setIsLoading(false);
         setTopicList(data[0].topics);
         setArticleList(data[1].articles);
-        setArticlesOnThisPage(
-          data[1].articles.slice(
-            (currentPage - 1) * articlePerPage,
-            currentPage * articlePerPage
-          )
-        );
+        setArticlesOnThisPage(data[1].articles.slice(0, 9));
       })
       .catch((err) => {
         console.log(err);
