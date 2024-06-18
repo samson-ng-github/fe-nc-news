@@ -22,16 +22,14 @@ export const CommentCard = (props) => {
     <>
       {isDeletingMessage ? (
         <h2 className="loading-message">Deleting message...</h2>
-      ) : null}
-
-      {isDeletingMessage ? null : (
+      ) : (
         <article className="comment-card">
           <p className="comment-author">{author}</p>
           <p className="comment-info">
             {`${created_at} • 👍 ${votes}`}
             {author === 'tickle122' ? ' • ' : null}
             {author === 'tickle122' ? (
-              <button className="bin-comment" onClick={handleDeleteComment}>
+              <button className="emoji" onClick={handleDeleteComment}>
                 🗑️
               </button>
             ) : null}

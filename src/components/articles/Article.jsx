@@ -12,8 +12,6 @@ export const Article = () => {
   const [article, setArticle] = useState({});
   const [commentList, setCommentList] = useState([]);
   const [fakeKudos, setFakeKudos] = useState(0);
-  // const [isArticleLoading, setIsArticleLoading] = useState(true);
-  // const [isCommentsLoading, setIsCommentsLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isPostingComment, setIsPostingComment] = useState(false);
   const [newComment, setNewComment] = useState('');
@@ -78,19 +76,20 @@ export const Article = () => {
 
   return (
     <main>
-      {isLoading ? <h2 className="loading-message">Loading...</h2> : null}
-      {isLoading ? null : (
-        <div>
+      {isLoading ? (
+        <h2 className="loading-message">Loading...</h2>
+      ) : (
+        <>
           <article id="article">
             <img id="article-img" src={article.article_img_url} />
             <h2>{article.title}</h2>
             <h3>{article.author}</h3>
             <p className="article-info">
               {`${article.topic.toUpperCase()} • ${article.created_at} • `}
-              <button className="kudos" onClick={handleThumbUp}>
+              <button className="emoji" onClick={handleThumbUp}>
                 👍
               </button>{' '}
-              <button className="kudos" onClick={handleThumbDown}>
+              <button className="emoji" onClick={handleThumbDown}>
                 👎
               </button>{' '}
               {`${fakeKudos}`}
@@ -100,8 +99,7 @@ export const Article = () => {
 
           {isPostingComment ? (
             <h2 className="loading-message">Posting comments...</h2>
-          ) : null}
-          {isPostingComment ? null : (
+          ) : (
             <form className="comment-form" onSubmit={handleCommentSubmit}>
               <label>
                 <span id="new-comment-author" htmlFor="comment-input">
@@ -132,7 +130,7 @@ export const Article = () => {
               />
             );
           })}
-        </div>
+        </>
       )}
     </main>
   );
