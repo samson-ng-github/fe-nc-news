@@ -195,4 +195,12 @@ select {
   #comment-submit {
     display: none;
   }
+  #option-list {
+    flex-direction: column;
+
+    text-align: center;
+  }
+  #pagination {
+    padding: 1rem 0 1rem 0;
+  }
 }

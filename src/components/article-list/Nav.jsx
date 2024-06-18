@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
 
-export const Nav = ({ topicList, handleSortByChange, handleOrderChange }) => {
+export const Nav = ({ topicList, setSortBy, setOrder }) => {
+  const handleSortByChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const handleOrderChange = (e) => {
+    setOrder(e.target.value);
+  };
+
   return (
     <nav>
       <ul id="topic-list">

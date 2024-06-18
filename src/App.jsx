@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import { ArticleList } from './components/articles/ArticleList';
-import { Article } from './components/articles/Article';
+import { ArticleList } from './components/article-list/ArticleList';
+import { Article } from './components/article/Article';
 import { Message } from './components/message/Message';
 import './App.css';
 
