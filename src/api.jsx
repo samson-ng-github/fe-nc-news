@@ -28,4 +28,18 @@ const patchVotes = (article_id, amount) => {
     });
 };
 
-export { getArticles, getArticleByID, getCommentsByArticle, patchVotes };
+const postComment = (article_id, body, author) => {
+  return ncNewsApi
+    .post(`/articles/${article_id}/comments`, { body, author })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export {
+  getArticles,
+  getArticleByID,
+  getCommentsByArticle,
+  patchVotes,
+  postComment,
+};
