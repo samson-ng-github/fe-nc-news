@@ -24,7 +24,9 @@ The project employs React Router Dom as well as hooks such as useState, useEffec
 
 You can find the hosted version of the deployed website here: https://nc-news.samson-ng.com/
 
-and the GitHub repo for the backend project here: https://github.com/samson-ng-github/be-nc-news
+the GitHub repo for the backend project here: https://github.com/samson-ng-github/be-nc-news
+
+and the live hosted API here: https://be-nc-news-v1e2.onrender.com/api/
 
 This is how you can clone and run the front end project on your local machine.
 
@@ -46,7 +48,7 @@ This will create a local server at port 5173. Open a browser and enter this as t
 
 http://localhost:5173/
 
-5. It is recommended to run the project with Node v20.11.1 or above and PG v8.7.3 or above.
+5. It is recommended to run the project with Node v20.11.1 or above.
 
 ---
 
