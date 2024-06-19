@@ -12,11 +12,11 @@ sort by date posted, vote counts, comment counts and title in ascending or desce
 
 The page displays 10 articles at any one time and you can navigate to the next 10 using the pagination bar.
 
-Upon clicking an article you will taken you the article's own page where you can read the article.
+Upon clicking an article you will be taken to the article's own page where you can read the article.
 
 In the article's page you can give likes or dislikes to the article, read other people's comments,
 
-like or dislike other people's comment, post your own comment or delete them if you want.
+like or dislike other people's comment, post your own comments or delete them if you want.
 
 You will see messages indicating when loading is in process or when errors have occurred.
 
