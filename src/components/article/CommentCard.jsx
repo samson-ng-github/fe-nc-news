@@ -1,28 +1,21 @@
 import { useState } from 'react';
+import { Message } from '../message/Message';
 import { deleteComment } from '../../api';
 
 export const CommentCard = (props) => {
   const { comment_id, body, author, votes, created_at, removeCommentFromList } =
     props;
-  const [isDeletingMessage, setIsDeletingMessage] = useState(false);
+  const [isDeletingComment, setIsDeletingComment] = useState(false);
 
   const handleDeleteComment = () => {
-    setIsDeletingMessage(true);
-    deleteComment(comment_id)
-      .then((data) => {
-        removeCommentFromList(comment_id);
-        setTimeout(() => {}, 1000);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsDeletingMessage(false);
-      });
+    setIsDeletingComment(true);
+    deleteComment(comment_id).then((data) => {
+      removeCommentFromList(comment_id);
+    });
   };
   return (
     <>
-      {isDeletingMessage ? (
-        <h2 className="loading-message">Deleting message...</h2>
-      ) : (
+      {isDeletingComment ? null : (
         <article className="comment-card">
           <p className="comment-author">{author}</p>
           <p className="comment-info">

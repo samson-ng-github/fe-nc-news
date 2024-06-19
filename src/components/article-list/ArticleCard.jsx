@@ -9,7 +9,7 @@ export const ArticleCard = (props) => {
         <img className="article-card-img" src={article_img_url} />
         <h2>{title}</h2>
         <p className="article-info">{`${topic.toUpperCase()} • ${created_at}`}</p>
-        <p className="article-info">👍 {votes}</p>
+        <p className="article-info">👍 👎 {votes}</p>
       </Link>
     </li>
   );
