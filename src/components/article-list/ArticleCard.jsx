@@ -6,10 +6,13 @@ export const ArticleCard = (props) => {
   return (
     <li className="article-card">
       <Link to={`/articles/${article_id}`}>
-        <img className="article-card-img" src={article_img_url} />
+        <img className="article-card-img" src={article_img_url} alt="" />
         <h2>{title}</h2>
         <p className="article-info">{`${topic.toUpperCase()} • ${created_at}`}</p>
-        <p className="article-info">👍 👎 {votes}</p>
+        <p className="article-info">
+          <span aria-label="like">👍</span> <span aria-label="dislike">👎</span>{' '}
+          {votes}
+        </p>
       </Link>
     </li>
   );

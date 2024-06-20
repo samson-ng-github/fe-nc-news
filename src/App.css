@@ -28,8 +28,13 @@ header {
   text-align: center;
 }
 
+h2 {
+  color: black;
+}
+
 h3 {
   font-weight: normal;
+  color: black;
 }
 
 nav {
@@ -88,7 +93,7 @@ select {
 .pagination-button-disabled {
   margin: 0 1rem 0 1rem;
   padding: 0 0.5rem 0 0.5rem;
-  color: rgb(193, 193, 193);
+  color: grey;
   pointer-events: none;
 }
 
@@ -115,7 +120,7 @@ select {
 
 .article-info,
 .comment-info {
-  color: red;
+  color: darkblue;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 20px;

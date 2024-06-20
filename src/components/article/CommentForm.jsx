@@ -38,10 +38,8 @@ export const CommentForm = ({ article_id, setCommentList }) => {
         <Message message="Posting comment..." />
       ) : (
         <form className="comment-form" onSubmit={handleCommentSubmit}>
-          <label>
-            <span id="new-comment-author" htmlFor="comment-input">
-              tickle122
-            </span>
+          <label htmlFor="comment-input">
+            <span id="new-comment-author">tickle122</span>
           </label>
           <input
             type="text"

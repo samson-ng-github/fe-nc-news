@@ -19,10 +19,16 @@ export const CommentCard = (props) => {
         <article className="comment-card">
           <p className="comment-author">{author}</p>
           <p className="comment-info">
-            {`${created_at} • 👍 ${votes}`}
+            {`${created_at} • `}
+            <span aria-label="like">👍</span>
+            {` ${votes}`}
             {author === 'tickle122' ? ' • ' : null}
             {author === 'tickle122' ? (
-              <button className="emoji" onClick={handleDeleteComment}>
+              <button
+                className="emoji"
+                onClick={handleDeleteComment}
+                aria-label="delete"
+              >
                 🗑️
               </button>
             ) : null}

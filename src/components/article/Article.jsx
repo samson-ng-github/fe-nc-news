@@ -62,15 +62,23 @@ export const Article = () => {
       {!isLoading && !isLoadingFailed ? (
         <>
           <article id="article">
-            <img id="article-img" src={article.article_img_url} />
+            <img id="article-img" src={article.article_img_url} alt="" />
             <h2>{article.title}</h2>
             <h3>{article.author}</h3>
             <p className="article-info">
               {`${article.topic.toUpperCase()} • ${article.created_at} • `}
-              <button className="emoji" onClick={handleThumbUp}>
+              <button
+                className="emoji"
+                onClick={handleThumbUp}
+                aria-label="like"
+              >
                 👍
               </button>{' '}
-              <button className="emoji" onClick={handleThumbDown}>
+              <button
+                className="emoji"
+                onClick={handleThumbDown}
+                aria-label="dislike"
+              >
                 👎
               </button>{' '}
               {`${fakeKudos}`}
