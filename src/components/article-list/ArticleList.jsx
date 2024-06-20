@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArticleCard } from './ArticleCard';
 import { Pagination } from './Pagination';
-import { Message } from '../message/Message';
+import { Message } from '../general/Message';
 import { Nav } from './Nav';
 import { getArticles, getTopics } from '../../api';
 

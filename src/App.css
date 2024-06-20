@@ -20,6 +20,14 @@ a {
   display: block;
 }
 
+#account {
+  width: auto;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: right;
+}
+
 header {
   width: auto;
   border: 1px solid black;
@@ -161,20 +169,16 @@ select {
 
 .comment-author {
   font-weight: bold;
+  line-height: 36px;
 }
 
-#new-comment-author {
+#username {
   font-weight: bold;
-  line-height: 36px;
 }
 
 #comment-submit {
   margin-left: 1rem;
   width: 70px;
-}
-
-#comment-author {
-  font-weight: bold;
 }
 
 .emoji {

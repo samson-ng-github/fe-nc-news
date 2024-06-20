@@ -1,12 +1,14 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import { ArticleList } from './components/article-list/ArticleList';
 import { Article } from './components/article/Article';
-import { Message } from './components/message/Message';
+import { Message } from './components/general/Message';
+import { Account } from './components/general/Account';
 import './App.css';
 
 function App() {
   return (
     <main>
+      <Account />
       <header>
         <Link to={'/'}>
           <h1>NC News</h1>

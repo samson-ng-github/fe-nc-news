@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Message } from '../message/Message';
+import { Message } from '../general/Message';
 import { CommentCard } from './CommentCard';
 import { getArticleByID, getCommentsByArticle, patchVotes } from '../../api';
 import { CommentForm } from './CommentForm';

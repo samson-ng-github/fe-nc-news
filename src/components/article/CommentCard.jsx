@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Message } from '../message/Message';
+import { Message } from '../general/Message';
 import { deleteComment } from '../../api';
 
 export const CommentCard = (props) => {

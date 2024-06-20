@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Message } from '../message/Message';
+import { Message } from '../general/Message';
 import { getCommentsByArticle, postComment } from '../../api';
 
 export const CommentForm = ({ article_id, setCommentList }) => {
@@ -39,7 +39,7 @@ export const CommentForm = ({ article_id, setCommentList }) => {
       ) : (
         <form className="comment-form" onSubmit={handleCommentSubmit}>
           <label htmlFor="comment-input">
-            <span id="new-comment-author">tickle122</span>
+            <span className="comment-author">tickle122</span>
           </label>
           <input
             type="text"
