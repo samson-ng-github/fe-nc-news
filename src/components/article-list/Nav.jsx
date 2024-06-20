@@ -15,7 +15,7 @@ export const Nav = ({ topicList, setSortBy, setOrder }) => {
         {topicList.map((topic) => {
           return (
             <li className="topic" key={topic.slug}>
-              <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+              <Link to={`/nc-news/topics/${topic.slug}`}>{topic.slug}</Link>
             </li>
           );
         })}

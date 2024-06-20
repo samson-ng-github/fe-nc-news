@@ -10,16 +10,19 @@ function App() {
     <main>
       <Account />
       <header>
-        <Link to={'/'}>
+        <Link to='/nc-news'>
           <h1>NC News</h1>
         </Link>
       </header>
 
       <Routes>
-        <Route path="/" element={<ArticleList />} />
-        <Route path="/topics/:topic" element={<ArticleList />} />
-        <Route path="/articles/:article_id" element={<Article />} />
-        <Route path="*" element={<Message message={'Page does not exist'} />} />
+        <Route path="/nc-news/" element={<ArticleList />} />
+        <Route path="/nc-news/topics/:topic" element={<ArticleList />} />
+        <Route path="/nc-news/articles/:article_id" element={<Article />} />
+        <Route
+          path="/nc-news/*"
+          element={<Message message={'Page does not exist'} />}
+        />
       </Routes>
     </main>
   );
