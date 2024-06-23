@@ -35,11 +35,11 @@ export const CommentForm = ({ article_id, setCommentList }) => {
   return (
     <>
       {isPostingComment ? (
-        <Message message="Posting comment..." />
+        <Message message="Posting comment..." style="no-margin" />
       ) : (
         <form className="comment-form" onSubmit={handleCommentSubmit}>
           <label htmlFor="comment-input">
-            <span className="comment-author">tickle122</span>
+            <span className="comment-poster">tickle122</span>
           </label>
           <input
             type="text"
@@ -54,7 +54,9 @@ export const CommentForm = ({ article_id, setCommentList }) => {
           </button>
         </form>
       )}
-      {isNewCommentEmpty ? <Message message="Please enter a comment." /> : null}
+      {isNewCommentEmpty ? (
+        <Message message="Please enter a comment." style="no-margin" />
+      ) : null}
     </>
   );
 };

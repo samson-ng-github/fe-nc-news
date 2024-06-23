@@ -7,12 +7,10 @@ import './App.css';
 
 function App() {
   return (
-    <main>
+    <>
       <Account />
       <header>
-        <Link to='/nc-news'>
-          <h1>NC News</h1>
-        </Link>
+        <Link to="/nc-news">NEWS</Link>
       </header>
 
       <Routes>
@@ -24,7 +22,7 @@ function App() {
           element={<Message message={'Page does not exist'} />}
         />
       </Routes>
-    </main>
+    </>
   );
 }
 
