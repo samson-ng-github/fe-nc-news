@@ -38,6 +38,14 @@ const postComment = (article_id, body, author) => {
     });
 };
 
+const patchComment = (comment_id) => {
+  return ncNewsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .then((res) => {
+      return res.data;
+    });
+};
+
 const deleteComment = (comment_id) => {
   return ncNewsApi.delete(`/comments/${comment_id}`).then((res) => {
     return res.data;
@@ -56,6 +64,7 @@ export {
   getCommentsByArticle,
   patchVotes,
   postComment,
+  patchComment,
   deleteComment,
   getTopics,
 };

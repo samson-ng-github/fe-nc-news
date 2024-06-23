@@ -56,52 +56,56 @@ export const Article = () => {
   };
 
   return (
-    <main>
+    <>
       {isLoading ? <Message message="Loading..." /> : null}
       {isLoadingFailed ? <Message message="Article does not exist" /> : null}
-      {!isLoading && !isLoadingFailed ? (
-        <>
-          <article id="article">
-            <img id="article-img" src={article.article_img_url} alt="" />
-            <h2>{article.title}</h2>
-            <h3>{article.author}</h3>
-            <p className="article-info">
-              {`${article.topic.toUpperCase()} • ${article.created_at} • `}
-              <button
-                className="emoji"
-                onClick={handleThumbUp}
-                aria-label="like"
-              >
-                👍
-              </button>{' '}
-              <button
-                className="emoji"
-                onClick={handleThumbDown}
-                aria-label="dislike"
-              >
-                👎
-              </button>{' '}
-              {`${fakeKudos}`}
-            </p>
-            <p>{article.body}</p>
-          </article>
-
-          <CommentForm
-            article_id={article_id}
-            setCommentList={setCommentList}
-          />
-
-          {commentList.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.comment_id}
-                {...comment}
-                removeCommentFromList={removeCommentFromList}
+      <main>
+        {!isLoading && !isLoadingFailed ? (
+          <>
+            <article id="article">
+              <h1>{article.title}</h1>
+              <img id="article-img" src={article.article_img_url} alt="" />
+              <p className="article-info">
+                {`${
+                  article.topic.charAt(0).toUpperCase() + article.topic.slice(1)
+                } • ${article.created_at} • `}
+                <button onClick={handleThumbUp}>
+                  <span className="material-symbols-outlined" aria-label="like">
+                    thumb_up
+                  </span>
+                </button>{' '}
+                {` ${fakeKudos} `}
+                <button onClick={handleThumbDown}>
+                  <span
+                    className="material-symbols-outlined"
+                    aria-label="dislike"
+                  >
+                    thumb_down
+                  </span>
+                </button>{' '}
+              </p>
+              <h3>{article.author}</h3>
+              <p>{article.body}</p>
+              <CommentForm
+                article_id={article_id}
+                setCommentList={setCommentList}
               />
-            );
-          })}
-        </>
-      ) : null}
-    </main>
+            </article>
+
+            <section id="comment-section">
+              {commentList.map((comment) => {
+                return (
+                  <CommentCard
+                    key={comment.comment_id}
+                    {...comment}
+                    removeCommentFromList={removeCommentFromList}
+                  />
+                );
+              })}
+            </section>
+          </>
+        ) : null}
+      </main>
+    </>
   );
 };
