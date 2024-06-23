@@ -10,8 +10,8 @@ function App() {
     <main>
       <Account />
       <header>
-        <Link to='/nc-news'>
-          <h1>NC News</h1>
+        <Link to="/nc-news">
+          <h1>NEWS</h1>
         </Link>
       </header>
 

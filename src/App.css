@@ -1,5 +1,20 @@
+@font-face {
+  font-family: 'Gill Sans';
+  src: url('./assets/GillSans-01.ttf');
+}
+
+@font-face {
+  font-family: 'Gill Sans Semi';
+  src: url('./assets/GillSans-SemiBold-05.ttf');
+}
+
+@font-face {
+  font-family: 'Gill Sans Bold';
+  src: url('./assets/GillSans-Bold-02.ttf');
+}
+
 * {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Gill Sans', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: 'wdth' 100;
@@ -13,6 +28,14 @@ body {
   margin: auto;
 }
 
+a,
+a:hover,
+a:visited,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
 a {
   text-decoration: none;
   width: 100%;
@@ -22,22 +45,52 @@ a {
 
 #account {
   width: auto;
-  border: 1px solid black;
+  height: 32px;
   margin: 1rem;
-  padding: 1rem;
-  text-align: right;
+  display: flex;
+}
+
+#logo {
+  width: 112px;
+  height: 32px;
+  margin-right: 1rem;
+}
+
+#account-logo {
+  width: 27px;
+  height: 27px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+  margin-right: 0.5rem;
+}
+
+#account-name {
+  font-family: 'Gill Sans Semi';
+  line-height: 32px;
 }
 
 header {
   width: auto;
-  border: 1px solid black;
   margin: 1rem;
-  padding: 1rem;
-  text-align: center;
+  padding: 10px;
+  padding-left: 15px;
+  text-align: left;
+  background-color: #b80000;
+  height: 60px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Gill Sans Semi';
+  line-height: 40px;
+  font-size: 40px;
 }
 
 h2 {
-  color: black;
+  color: #545658;
+  font-size: 20px;
+  font-family: 'Gill Sans Semi';
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -47,9 +100,7 @@ h3 {
 
 nav {
   width: auto;
-  border: 1px solid black;
   margin: 1rem;
-  padding: 1rem;
 }
 
 .message {
@@ -62,35 +113,38 @@ nav {
 
 #topic-list {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
   list-style-type: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .topic {
-  border: 1px solid black;
-  width: auto;
-  padding: 0.5rem;
-  display: inline-block;
+  border-right: 1px solid black;
+  text-transform: capitalize;
+  color: black;
+  font-size: 18px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.topic:first-child {
+  padding-left: 0;
+}
+
+.topic:last-child {
+  border-right: 0;
 }
 
 #option-list {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   list-style-type: none;
 }
 select {
-  width: 150px;
+  width: 100px;
 }
 
 #pagination {
-  width: auto;
-  border: 1px solid black;
-  margin: 1rem;
-  padding: 1rem;
-  text-align: center;
+  text-align: right;
 }
 
 .pagination-button {
@@ -114,24 +168,30 @@ select {
 }
 
 .article-card {
-  border: 1px solid black;
   width: 300px;
   height: auto;
-  padding: 1rem;
   list-style-type: none;
   display: inline-block;
 }
 
 .article-card-img {
-  width: 266px;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 1rem;
+  object-fit: fill;
+}
+
+.material-symbols-outlined {
+  vertical-align: top;
+  font-size: 14px;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
 .article-info,
 .comment-info {
-  color: darkblue;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 20px;
+  color: #b80000;
+  font-size: 14px;
+  margin-bottom: 1rem;
 }
 
 #article {
@@ -205,9 +265,8 @@ select {
     display: none;
   }
   #option-list {
+    gap: 0.5rem;
     flex-direction: column;
-
-    text-align: center;
   }
   #pagination {
     padding: 1rem 0 1rem 0;

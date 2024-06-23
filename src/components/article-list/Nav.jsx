@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const Nav = ({ topicList, setSortBy, setOrder }) => {
+  const { topic } = useParams();
+
   const handleSortByChange = (e) => {
     setSortBy(e.target.value);
   };
@@ -12,10 +14,15 @@ export const Nav = ({ topicList, setSortBy, setOrder }) => {
   return (
     <nav>
       <ul id="topic-list">
-        {topicList.map((topic) => {
+        {topicList.map((oneTopic) => {
           return (
-            <li className="topic" key={topic.slug}>
-              <Link to={`/nc-news/topics/${topic.slug}`}>{topic.slug}</Link>
+            <li className="topic" key={oneTopic.slug}>
+              <Link
+                to={`/nc-news/topics/${oneTopic.slug}`}
+                style={oneTopic.slug === topic ? { color: '#b80000' } : null}
+              >
+                {oneTopic.slug}
+              </Link>
             </li>
           );
         })}
